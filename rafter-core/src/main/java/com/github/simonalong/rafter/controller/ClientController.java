@@ -10,7 +10,6 @@ import com.simonalong.glue.annotation.GlueController;
 @GlueController(executor = "single")
 public class ClientController {
 
-
     /**
      * 预写入返回
      * @return

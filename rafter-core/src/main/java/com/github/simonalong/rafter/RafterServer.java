@@ -16,37 +16,29 @@ import java.util.function.Function;
  */
 public class RafterServer {
 
-    private GlueServer server = GlueServer.getInstance();
-    private GlueClient client = GlueClient.getInstance();
+    private final Node node = Node.getInstance();
+
     private final List<String> urlList = new ArrayList<String>();
     private Integer port;
 
     public RafterServer(String... urls) {
         urlList.addAll(Arrays.asList(urls));
-        for (String url : urls) {
-            client.addConnect(url);
-        }
+        node.addConnect(urls);
     }
 
     public RafterServer addConnect(String... urls) {
         urlList.addAll(Arrays.asList(urls));
+        node.addConnect(urls);
         return this;
     }
 
     public void bind(int port) {
         this.port = port;
+        node.bind(port);
     }
 
     public void start() {
-        server.addController(ServerController.class);
-        server.addController(ServerOfHeartController.class);
-        server.addController(ServerOfVoteController.class);
-        server.start();
-
-        client.addController(ClientController.class);
-        client.addController(ClientOfHeartController.class);
-        client.addController(ClientOfVoteController.class);
-        client.start();
+        node.start();
     }
 
     public void addCallOfPut(Function<String, String> callOfPut) {
