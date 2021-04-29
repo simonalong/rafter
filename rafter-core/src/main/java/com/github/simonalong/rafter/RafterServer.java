@@ -1,15 +1,14 @@
 package com.github.simonalong.rafter;
 
-import com.github.simonalong.rafter.controller.ClientOfLeaderController;
-import com.github.simonalong.rafter.controller.ServerOfCandidateController;
-import com.github.simonalong.rafter.controller.ServerOfFollowerController;
-import com.github.simonalong.rafter.controller.ServerOfLeaderController;
+import com.github.simonalong.rafter.controller.*;
 import com.simonalong.glue.GlueClient;
 import com.simonalong.glue.GlueServer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.function.Function;
 
 /**
  * @author shizi
@@ -39,14 +38,34 @@ public class RafterServer {
     }
 
     public void start() {
-        server.addController(ServerOfLeaderController.class);
-        server.addController(ServerOfCandidateController.class);
-        server.addController(ServerOfFollowerController.class);
+        server.addController(ServerController.class);
+        server.addController(ServerOfHeartController.class);
+        server.addController(ServerOfVoteController.class);
         server.start();
 
-        client.addController(ClientOfLeaderController.class);
-        client.addController(ServerOfCandidateController.class);
-        client.addController(ServerOfFollowerController.class);
+        client.addController(ClientController.class);
+        client.addController(ClientOfHeartController.class);
+        client.addController(ClientOfVoteController.class);
         client.start();
+    }
+
+    public void addCallOfPut(Function<String, String> callOfPut) {
+
+    }
+
+    public void addCallOfGet(Function<String, String> callOfGet) {
+
+    }
+
+    public void addCallOfDelete(Function<String, String> callOfDelete) {
+
+    }
+
+    public void addCallOfKeys(Callable<List<String>> callOfKeys) {
+
+    }
+
+    public void addCallOfKeys(Function<String, List<String>> callOfKeys) {
+
     }
 }
