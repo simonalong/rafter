@@ -14,7 +14,14 @@ public class Node {
 
     private static final Node INSTANCE = new Node();
 
-    private NodeStatusEnum nodeStatus = NodeStatusEnum.FOLLOWER;
+    /**
+     * 节点角色
+     */
+    private NodeRoleEnum nodeStatus = NodeRoleEnum.FOLLOWER;
+    /**
+     * 节点任期
+     */
+    private Long term = 0L;
     private final GlueServer server = GlueServer.getInstance();
     private final GlueClient client = GlueClient.getInstance();
 
@@ -34,7 +41,7 @@ public class Node {
         server.bind("127.0.0.1:" + port);
     }
 
-    public void changeStatus(NodeStatusEnum nodeStatus) {
+    public void changeStatus(NodeRoleEnum nodeStatus) {
         this.nodeStatus = nodeStatus;
     }
 
@@ -103,5 +110,7 @@ public class Node {
         client.addController(ClientOfHeartController.class);
         client.addController(ClientOfElectionController.class);
         client.start();
+
+
     }
 }

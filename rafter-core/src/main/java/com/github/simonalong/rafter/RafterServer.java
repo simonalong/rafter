@@ -18,22 +18,16 @@ public class RafterServer {
 
     private final Node node = Node.getInstance();
 
-    private final List<String> urlList = new ArrayList<String>();
-    private Integer port;
-
     public RafterServer(String... urls) {
-        urlList.addAll(Arrays.asList(urls));
-        node.addConnect(urls);
+        addPeerNode(urls);
     }
 
-    public RafterServer addConnect(String... urls) {
-        urlList.addAll(Arrays.asList(urls));
+    public RafterServer addPeerNode(String... urls) {
         node.addConnect(urls);
         return this;
     }
 
     public void bind(int port) {
-        this.port = port;
         node.bind(port);
     }
 

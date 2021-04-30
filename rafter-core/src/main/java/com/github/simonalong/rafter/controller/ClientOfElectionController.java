@@ -1,7 +1,7 @@
 package com.github.simonalong.rafter.controller;
 
 import com.github.simonalong.rafter.pojo.BeKingRsp;
-import com.github.simonalong.rafter.pojo.ElectionRsp;
+import com.github.simonalong.rafter.pojo.VoteRsp;
 import com.simonalong.glue.annotation.CommandMapping;
 import com.simonalong.glue.annotation.GlueController;
 
@@ -13,7 +13,7 @@ import com.simonalong.glue.annotation.GlueController;
 public class ClientOfElectionController {
 
     @CommandMapping(request = "voteResult")
-    public void voteResult(ElectionRsp voteRsp) {
+    public void voteResult(VoteRsp voteRsp) {
         // todo
     }
 

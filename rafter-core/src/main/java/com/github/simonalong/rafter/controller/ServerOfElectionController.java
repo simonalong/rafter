@@ -2,8 +2,8 @@ package com.github.simonalong.rafter.controller;
 
 import com.github.simonalong.rafter.pojo.BeKingReq;
 import com.github.simonalong.rafter.pojo.BeKingRsp;
-import com.github.simonalong.rafter.pojo.ElectionReq;
-import com.github.simonalong.rafter.pojo.ElectionRsp;
+import com.github.simonalong.rafter.pojo.VoteReq;
+import com.github.simonalong.rafter.pojo.VoteRsp;
 import com.simonalong.glue.annotation.CommandMapping;
 import com.simonalong.glue.annotation.GlueController;
 
@@ -19,8 +19,8 @@ public class ServerOfElectionController {
      * @param voteReq
      * @return
      */
-    @CommandMapping(request = "election", response = "voteRsp")
-    public ElectionRsp election(ElectionReq voteReq) {
+    @CommandMapping(request = "vote", response = "voteRsp")
+    public VoteRsp election(VoteReq voteReq) {
         // todo
     }
 

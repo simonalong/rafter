@@ -7,6 +7,6 @@ import lombok.Data;
  * @since 2021-04-29 23:58:12
  */
 @Data
-public class ElectionRsp {
+public class VoteRsp {
 
 }

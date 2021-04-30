@@ -31,7 +31,7 @@ public class RafterTest {
 
     @Test
     public void server4Test() {
-        RafterServer server = new RafterServer().addConnect("localhost:8081", "localhost:8082");
+        RafterServer server = new RafterServer().addPeerNode("localhost:8081", "localhost:8082");
         server.bind(8084);
         server.start();
     }
